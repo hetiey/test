@@ -9,6 +9,8 @@ yy = y*x
 yyy = xxx*y*x
 with tf.Session()as sess:
     print(z)
+    print(x)
+    print(yy)
     print(sess.run(y))
     print(sess.run(yy))
     print(sess.run(yyy))
