@@ -8,6 +8,7 @@ aaa = aa*aa
 yy = y*a
 yyy = aaa * y * a
 init = tf.global_variables_initializer()
+sess.run(init)
 with tf.Session()as sess:
     print(z)
     print(sess.run(a))
