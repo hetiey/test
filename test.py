@@ -13,7 +13,7 @@ cross_entropy = -tf.reduce_sum(y_*tf.log(y))
   
 with tf.Session() as sess:  
     softmax=sess.run(y)
-    temp = see.run(t)  
+    temp = sess.run(t)  
     c_e = sess.run(cross_entropy)  
     #c_e2 = sess.run(cross_entropy2)  
     print("step1:softmax result=")  
