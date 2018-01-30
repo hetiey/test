@@ -1,13 +1,22 @@
-import tensorflow as tf
-import numpy as np
-z=np.random.randint(0,10,size=[10])
-a = tf.Variable(tf.random_normal([10,1],seed=1))
-y=tf.one_hot(z,10,on_value=1,off_value=None,axis=0)
-aa = 1-a
-aaa = aa*aa
-with tf.Session()as sess:
-    print(z)
-    print(sess.run(a))
-    print(sess.run(aa))
-    print(sess.run(aaa))        
-    print(sess.run(y))
+import tensorflow as tf  
+#our NN's output  
+logits=tf.constant([[1.0,2.0,3.0],[1.0,2.0,3.0],[1.0,2.0,3.0]])  
+#step1:do softmax  
+y=tf.nn.softmax(logits)  
+#true label  
+y_=tf.constant([[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]])  
+#step2:do cross_entropy  
+cross_entropy = -tf.reduce_sum(y_*tf.log(y))  
+#do cross_entropy just one step  
+#cross_entropy2=tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(logits, y_))#dont forget tf.reduce_sum()!!  
+  
+with tf.Session() as sess:  
+    softmax=sess.run(y)  
+    c_e = sess.run(cross_entropy)  
+    #c_e2 = sess.run(cross_entropy2)  
+    print("step1:softmax result=")  
+    print(softmax)  
+    print("step2:cross_entropy result=")  
+    print(c_e)  
+    #print("Function(softmax_cross_entropy_with_logits) result=")  
+    #print(c_e2)  
