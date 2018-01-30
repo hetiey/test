@@ -5,5 +5,5 @@ x=np.random.rand(10)
 y=tf.one_hot(z,10,on_value=1,off_value=None,axis=0)
 with tf.Session()as sess:
     print(z)
-    print(x)
+    print(1-x)
     print(sess.run(y))
