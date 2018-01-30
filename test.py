@@ -5,6 +5,7 @@ logits=tf.constant([[1.0,2.0,3.0],[1.0,2.0,3.0],[1.0,2.0,3.0]])
 y=tf.nn.softmax(logits)  
 #true label  
 t = 1 - y
+tt = t * t
 y_=tf.constant([[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]])  
 #step2:do cross_entropy  
 cross_entropy = -tf.reduce_sum(y_*tf.log(y))  
@@ -13,7 +14,7 @@ cross_entropy = -tf.reduce_sum(y_*tf.log(y))
   
 with tf.Session() as sess:  
     softmax=sess.run(y)
-    temp = sess.run(t)  
+    temp = sess.run(tt)  
     c_e = sess.run(cross_entropy)  
     #c_e2 = sess.run(cross_entropy2)  
     print("step1:softmax result=")  
